@@ -1,14 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
+import validateInput from './validation/login'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       inputs: {
-        username: 'idiot username',
+        username: 'i',
         password: 'idiotic password'
-      }
+      },
+      errors: {}
     }
   }
 
@@ -18,8 +20,19 @@ export default class App extends React.Component {
     this.setState({ inputs: newInputs })
   }
 
-  onPressLearnMore() {
+  isValid() {
+    const { isValid, errors } = validateInput(this.state.inputs)
+    console.log('@errors: ', errors)
+    this.setState({ errors }, ()=>{
+      console.log('@updated state: ', this.state)
+    })
+    return isValid
+  }
 
+  handleSubmit() {
+    if (this.isValid()) {
+      console.log('success!')
+    }
   }
 
   render() {
@@ -38,10 +51,9 @@ export default class App extends React.Component {
           onChangeText={ this.handleInputChange.bind(this, 'password') }
         />
         <Button
-          onPress={ this.onPressLearnMore }
-          title='Learn More'
-          color='#841584'
-          accessibilityLabel='Learn more about this purple button'
+          onPress={ this.handleSubmit.bind(this) }
+          title='Sign In'
+          accessibilityLabel='Sign In'
         />
       </View>
     )
