@@ -7,7 +7,7 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       inputs: {
-        username: 'i',
+        username: 'D',
         password: 'idiotic password'
       },
       errors: {}
@@ -22,21 +22,18 @@ export default class App extends React.Component {
 
   isValid() {
     const { isValid, errors } = validateInput(this.state.inputs)
-    console.log('@errors: ', errors)
-    this.setState({ errors }, ()=>{
-      console.log('@updated state: ', this.state)
-    })
+    this.setState({ errors })
     return isValid
   }
 
   handleSubmit() {
     if (this.isValid()) {
-      console.log('success!')
+      console.log('Login successful! :)')
     }
   }
 
   render() {
-    const { inputs } = this.state
+    const { inputs, errors } = this.state
     return (
       <View style={styles.container}>
         <Text>Fucker App</Text>
@@ -45,11 +42,13 @@ export default class App extends React.Component {
           value= { inputs.username }
           onChangeText={ this.handleInputChange.bind(this, 'username') }
         />
+        <Text>{ errors.username }</Text>
         <Text>Password</Text>
         <TextInput
           value= { inputs.password }
           onChangeText={ this.handleInputChange.bind(this, 'password') }
         />
+        <Text>{ errors.password }</Text>
         <Button
           onPress={ this.handleSubmit.bind(this) }
           title='Sign In'
