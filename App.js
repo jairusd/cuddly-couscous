@@ -1,16 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 
 export default class App extends React.Component {
+  onPressLearnMore() {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-        <Text>This is awesomddde!!</Text>
+        <Text>Fucker App</Text>
+        <Text>Username</Text>
+        <TextInput
+          value='test'
+        />
+        <Text>Password</Text>
+        <TextInput
+          value='test'
+        />
+        <Button
+          onPress={this.onPressLearnMore}
+          title='Learn More'
+          color='#841584'
+          accessibilityLabel='Learn more about this purple button'
+        />
       </View>
-    );
+    )
   }
 }
 
@@ -19,6 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    justifyContent: 'center'
+  }
+})
