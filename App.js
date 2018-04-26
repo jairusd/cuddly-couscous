@@ -28,7 +28,14 @@ export default class App extends React.Component {
 
   handleSubmit() {
     if (this.isValid()) {
-      console.log('Login successful! :)')
+      alert(
+        'Login is successful! :)',
+        'Success',
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        { cancelable: false }
+      )
     }
   }
 
