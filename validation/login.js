@@ -12,9 +12,7 @@ export default function validateInput(data) {
 
   if (Validator.isEmpty(data.password.trim())) {
     errors.password = 'Password is required'
-  } else if (data.password.length < 6) {
-    errors.password = 'Password must be atleast 6 characters'
-  } else if (data.password.length > 12) {
+  } else if (data.password.length < 6 || data.password.length > 12) {
     errors.password = 'Password must be 6-12 characters long'
   }
 
