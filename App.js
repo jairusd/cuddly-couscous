@@ -1,5 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
+import _ from 'lodash'
+import { StyleSheet
+  , View
+  , Image } from 'react-native'
+import { FormLabel
+  , FormInput
+  , FormValidationMessage
+  , Button
+  , Text  } from 'react-native-elements'
+
 import validateInput from './validation/login'
 
 export default class App extends React.Component {
@@ -7,8 +16,8 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       inputs: {
-        username: 'D',
-        password: 'idiotic password'
+        email: '',
+        password: ''
       },
       errors: {}
     }
@@ -16,8 +25,12 @@ export default class App extends React.Component {
 
   handleInputChange(id, text) {
     const { inputs } = this.state
+
     const newInputs = { ...inputs, [`${id}`]: text }
-    this.setState({ inputs: newInputs })
+
+    this.setState({ inputs: newInputs }, ()=>{
+      this.isValid()
+    })
   }
 
   isValid() {
@@ -43,23 +56,34 @@ export default class App extends React.Component {
     const { inputs, errors } = this.state
     return (
       <View style={styles.container}>
-        <Text>Fucker App</Text>
-        <Text>Username</Text>
-        <TextInput
-          value= { inputs.username }
-          onChangeText={ this.handleInputChange.bind(this, 'username') }
+        <Image
+          source={require('./img/logo.png')}
         />
-        <Text>{ errors.username }</Text>
+
+        <Text>Email</Text>
+        <FormInput
+          placeholder='Input Email'
+          value={ inputs.email }
+          onChangeText={ this.handleInputChange.bind(this, 'email') }
+        />
+        <FormValidationMessage>{ errors.email }</FormValidationMessage>
+
         <Text>Password</Text>
-        <TextInput
-          value= { inputs.password }
+        <FormInput
+          placeholder='Input Password'
+          secureTextEntry
+          value={ inputs.password }
           onChangeText={ this.handleInputChange.bind(this, 'password') }
         />
-        <Text>{ errors.password }</Text>
+        <FormValidationMessage>{ errors.password }</FormValidationMessage>
+
         <Button
           onPress={ this.handleSubmit.bind(this) }
           title='Sign In'
           accessibilityLabel='Sign In'
+          large
+          backgroundColor='#714DB1'
+          disabled={!_.isEmpty(errors)}
         />
       </View>
     )
