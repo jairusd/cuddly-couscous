@@ -65,7 +65,7 @@ export default class App extends React.Component {
           </View>
           <TextInput
             placeholder='Input Email'
-            value={ inputs.email }
+            value={inputs.email}
             onChangeText={ this.handleInputChange.bind(this, 'email') }
             style={styles.input}
           />
@@ -79,7 +79,7 @@ export default class App extends React.Component {
           <TextInput
             placeholder='Input Password'
             secureTextEntry
-            value={ inputs.password }
+            value={inputs.password}
             onChangeText={ this.handleInputChange.bind(this, 'password') }
             style={styles.input}
           />
@@ -87,13 +87,14 @@ export default class App extends React.Component {
         </View>
 
         <Button
-          onPress={ this.handleSubmit.bind(this) }
+          onPress={this.handleSubmit.bind(this)}
           title='Sign In'
           accessibilityLabel='Sign In'
           disabled={!_.isEmpty(errors)}
           backgroundColor='#714DB1'
           color='#ffffff'
           borderRadius={5}
+          fontSize={20}
           containerViewStyle={styles.button}
         />
       </View>

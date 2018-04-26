@@ -19,7 +19,7 @@ module.exports = StyleSheet.create({
   },
   inputLabel: {
     fontWeight: 'bold',
-    fontSize: 22
+    fontSize: 20
   },
   labelLayout: {
     paddingBottom: 5
