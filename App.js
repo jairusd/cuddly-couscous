@@ -1,13 +1,13 @@
 import React from 'react'
 import _ from 'lodash'
-import { StyleSheet
-  , View
+import { View
   , Image
   , TextInput
   , Text } from 'react-native'
 import { Button } from 'react-native-elements'
 
 import validateInput from './validation/login'
+import styles from './css/app'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,7 +23,6 @@ export default class App extends React.Component {
 
   handleInputChange(id, text) {
     const { inputs } = this.state
-
     const newInputs = { ...inputs, [`${id}`]: text }
 
     this.setState({ inputs: newInputs }, ()=>{
@@ -101,41 +100,3 @@ export default class App extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    flex: 1,
-    justifyContent: 'center'
-  },
-  formGroup: {
-    marginBottom: 10
-  },
-  input: {
-    borderRadius: 5,
-    borderStyle: 'solid',
-    borderColor: '#714DB1',
-    borderWidth: 1,
-    padding: 10,
-    fontSize: 18
-  },
-  inputLabel: {
-    fontWeight: 'bold',
-    fontSize: 22
-  },
-  labelLayout: {
-    paddingBottom: 5
-  },
-  errorLabel: {
-    color: 'red'
-  },
-  button: {
-    width: '100%',
-    marginLeft: 0
-  },
-  logo: {
-    margin: 'auto',
-    alignItems: 'center',
-    marginBottom: 60
-  }
-})
