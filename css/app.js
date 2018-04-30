@@ -59,7 +59,8 @@ module.exports = StyleSheet.create({
   },
   logo: {
     alignSelf: 'center',
-    marginBottom: 60
+    marginBottom: 60,
+    marginTop: 30
   },
   inputLabel: {
     fontWeight: 'bold',
