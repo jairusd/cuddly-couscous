@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'
 import _ from 'lodash'
 import { View
@@ -23,11 +25,10 @@ export default class App extends React.Component {
 
   handleInputChange(id, text) {
     const { inputs } = this.state
-    const newInputs = { ...inputs, [`${id}`]: text }
+    const newInputs = { ...inputs, [id]: text }
 
-    this.setState({ inputs: newInputs }, ()=>{
-      this.isValid()
-    })
+    const { errors } = validateInput(newInputs)
+    this.setState({ inputs: newInputs, errors })
   }
 
   isValid() {
@@ -42,7 +43,7 @@ export default class App extends React.Component {
         'Login is successful! :)',
         'Success',
         [
-          {text: 'OK', onPress: () => console.log('OK Pressed')},
+          { text: 'OK', onPress: () => console.log('OK Pressed') }
         ],
         { cancelable: false }
       )
